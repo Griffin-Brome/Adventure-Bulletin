@@ -30,4 +30,6 @@ div {
 #new{
     font-size: 30px;
 }
-
+#userProfile{
+    border:  2px solid teal;
+}
