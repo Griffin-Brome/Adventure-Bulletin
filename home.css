@@ -1,0 +1,35 @@
+#pageTitle{
+    font-size: 40px;
+}
+#addPost{
+    position: relative;
+    top: 13em;
+    padding: 15px 32px;
+    background-color: teal;
+    color: white;
+    font-size: 16px;
+}
+#search{
+    position: relative;
+    top: 1em;
+}
+.col-sm-1{
+    font-size: larger;
+    border: 2px solid teal;
+    border-radius: 1em;
+    margin: 10px;
+    border-width: 3px;
+    width: 60px;
+    height: 60px;
+}
+div {
+    padding-top: 1em;
+    padding-right: 5px;
+    padding-bottom: 1em;
+  }
+#new{
+    font-size: 30px;
+}
+#userProfile{
+    border:  2px solid teal;
+}
