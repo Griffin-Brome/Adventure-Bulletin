@@ -1,0 +1,12 @@
+.button {
+    position: relative;
+    top: 2em;
+    padding: 15px 32px;
+    background-color: teal;
+    color: white;
+    font-size: 16px;
+}
+.login{
+    text-align: center;
+    padding: 1em;
+}
