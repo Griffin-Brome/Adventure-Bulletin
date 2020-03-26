@@ -17,7 +17,12 @@
         <div class="row" id="top">
             <div class="col-sm-5">
                 <h1 id="pageTitle">Adventure Bulletin</h1>
-                <p><button class="button" style="top: 9em;" type="button">Home</button></p>
+                <p><button id="home" class="button" style="top: 9em;" type="button">Home</button></p>
+                <script type="text/javascript">
+                    document.getElementById("home").onclick = function () {
+                        location.href = "home.html";
+                    };
+                </script>
             </div>
             <div class="col-sm-2" id="add">
                 <p id="category">
@@ -32,6 +37,7 @@
             </div>
             <div class="col-sm-2" id="add">
                 <p><button class="button"  type="button">Add Post</button></p>
+                
             </div>
             <div class="col-sm-3">
                 <img src="Logo.png" alt="Logo" id="Logo" width=200>
