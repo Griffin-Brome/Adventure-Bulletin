@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
+</head>
+<main>
+    <header>
+    <div class="container">
+        <div class="row" id="top">
+            <div class="col-sm-9">
+                <h1 id="pageTitle">Adventure Bulletin</h1>
+                <p><button id="home" class="button" type="button">Home</button></p>
+                <script type="text/javascript">
+                    document.getElementById("home").onclick = function () {
+                        location.href = "home.html";
+                    };
+                </script>
+            </div>
+            <div class="col-sm-3">
+                <img src="Logo.png" alt="Logo" id="Logo" width=200>
+            </div>  
+    </div>
+    </div>
+    <hr>
+</header>
+
+<!--Login section-->
+<body>
+    <div class="login">
+        <form name=user method="POST" action="http://www.randyconnolly.com/tests/process.php" onsubmit="return validateForm()" >
+            <p>
+                <label for="user">Username:</label>
+                <input type="text" id="user" name="username" required>
+            </p>
+            <p>
+                <label for="pass">Password:</label>
+                <input type="password" id="pass" name="password" required>
+            </p>
+            <p>
+            <input class="button" id="login" type="submit" value="Login"> 
+            </p>    
+        </form>
+    </div>
+
+        </main>
+    </body>
+    
+    </html>
