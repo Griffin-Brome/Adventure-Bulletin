@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="account.css">
+    <script src="account.js"></script>
 </head>
 <main>
     <header>
@@ -31,15 +32,15 @@
 
 <!--Login section-->
 <body>
-    <div class="create">
-        <form method="POST" action="http://www.randyconnolly.com/tests/process.php">
+    <div class="createAccount">
+        <form name="create" method="POST" action="http://www.randyconnolly.com/tests/process.php" onsubmit="return validateForm()">
         <p>
             <label for="name">First and Last Name:</label>
             <input type="text" id="name" name="name">
         </p>
         <p>
             <label for="email">Enter your email:</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" required>
         </p>
             <p>
                 <label for="user">Username:</label>
@@ -55,7 +56,7 @@
             </p>
             <p>
                 <label for="birthday">Date of Birth:</label>
-                <input type="date" id="birthday" name="birthday">
+                <input type="date" id="birthday" name="birthday" required>
             </p>
             <p>
             <input class="button" id="login" type="submit" value="Login"> 
