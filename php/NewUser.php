@@ -1,3 +1,4 @@
+<!--This script works-->
 <?php
     include 'DBConnection.php';
     try {
