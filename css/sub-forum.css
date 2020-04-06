@@ -1,6 +1,17 @@
 #pageTitle{
     font-size: 40px;
 }
+#post{
+    
+    height: 200px;
+}
+#sub{
+    position: relative;
+    padding: 15px 32px;
+    background-color: teal;
+    color: white;
+    font-size: 16px;
+}
 .button {
     position: relative;
     top: 13em;
@@ -26,8 +37,9 @@ div {
     padding-right: 5px;
     padding-bottom: 1em;
   }
-#new{
+#posts{
     font-size: 30px;
+    top:20em;
 }
 #description{
     border:  2px solid teal;
@@ -43,4 +55,16 @@ div {
     outline: none;
     font-size: 15px;
   }
+  #add-post{
+    border:  2px solid teal;
+}
+.col-sm-1{
+    font-size: larger;
+    border: 2px solid teal;
+    border-radius: 1em;
+    margin: 10px;
+    border-width: 3px;
+    width: 60px;
+    height: 60px;
+}
 

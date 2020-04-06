@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <title>Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/7bea0d4d5b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/home.css">
 </head>
@@ -12,12 +12,29 @@
     <header>
     <div class="container">
         <div class="row" id="top">
-            <div class="col-sm-7">
+            <div class="col-sm-5">
                 <h1 id="pageTitle">Adventure Bulletin</h1>
             </div>
-            <div class="col-sm-2" id="add">
-                <p><button id="addPost" type="button">Add Post</button></p>
+            <div class="col-sm-2">
+                <p><button class="button" id="view"type="button">View Posts</button></p>
+                <script type="text/javascript">
+                    document.getElementById("view").onclick = function () {
+                        location.href = "sub-forum.html";
+                    };
+                </script>    
             </div>
+                <!--Add code to check if user is logged in-->
+                <div class="col-sm-2">
+                    <p id="login">
+                        <label for="account">Account</label>
+                        <select id="account" onchange="location = this.options[this.selectedIndex].value;">
+                            <option>Select</option>
+                            <option value="login.html">Login</option>
+                            <option value="account.html">Create Account</option>
+                        </select>
+                    </p>
+                </div>
+                <!--If already loged in, display username instead of button-->
             <div class="col-sm-3">
                 <img src="img/Logo.png" alt="Logo" id="Logo" width=200>
                 <p><textarea id="search" placeholder="search"></textarea></p>
@@ -46,7 +63,12 @@
                 <p id="Interests">Interest: Climbing, Biking and Skiing</p>
                 <p id="Posts">Posts: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <p id="userImg"><img src="img/user.png" width=100></p>
-                <p><button class="btn"><i class="fas fa-user-cog"></i></p>     
+                <p><button class="btn" id="settings"><i class="fas fa-user-cog"></i></p> 
+                    <script type="text/javascript">
+                        document.getElementById("settings").onclick = function () {
+                            location.href = "profile.html";
+                        };
+                    </script>    
             </div>
             <!--End user profile-->
         </div>
