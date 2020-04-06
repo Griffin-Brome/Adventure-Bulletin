@@ -15,7 +15,7 @@
     <header>
     <div class="container">
         <div class="row" id="top">
-            <div class="col-sm-5">
+            <div class="col-sm-7">
                 <h1 id="pageTitle">Adventure Bulletin</h1>
                 <p><button id="home" class="button" style="top: 9em;" type="button">Home</button></p>
                 <script type="text/javascript">
@@ -35,10 +35,6 @@
                     </select>
                 </p>
             </div>
-            <div class="col-sm-2" id="add">
-                <p><button class="button"  type="button">Add Post</button></p>
-                
-            </div>
             <div class="col-sm-3">
                 <img src="img/Logo.png" alt="Logo" id="Logo" width=200>
                 <p><textarea id="search" placeholder="search"></textarea></p>
@@ -47,24 +43,42 @@
     </div>
     <hr>
 </header>
+<body>
+<!--Add post-->
 
 <!--Start of posts-->
-<body>
     <div class="container">
-        <p id="new">New Posts</p>
+
+        <p id="posts">Posts</p>
         
         <div class="row" id="second">
             <div class="col-sm-1">
                 <p>1</p>
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-6">
                 <p id="post1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             
             </div>
-            <!--Description-->
-            <div class="col-sm-4" id="description">
-                <p style="font-size: 30px;">Description</p>  
-                <p ></p> 
+            <div id="add-post" class="col-sm-4">
+                <!--Should be submited to database with php-->
+                <form name=user method="POST" action="http://www.randyconnolly.com/tests/process.php" onsubmit="return validateForm()" >
+                    <p style="font-size: large; font-weight: bold;">Add Post</p>
+                    <p>
+                        <label>Title</label>
+                        <input type="text" name="title" size="35">
+                        <label>Category</label>
+                        <select>
+                            <option value="skiing">Skiing</option>
+                            <option value="climbing">Climbing</option>
+                            <option value="biking">Biking</option>
+                            <option value="kayaking">Kayaking</option>
+                        <select>
+                        <input type="text" id="post" name="post" size="35" height="30">
+                    </p>   
+                    <p>
+                        <input id="sub" type="submit" value="Add"> 
+                    </p>    
+                </form>
             </div>
         </div>
         <div class="container">
