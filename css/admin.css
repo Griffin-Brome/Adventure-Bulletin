@@ -1,7 +1,7 @@
 #pageTitle{
     font-size: 40px;
 }
-.button{
+.button {
     position: relative;
     top: 13em;
     padding: 15px 32px;
@@ -9,18 +9,17 @@
     color: white;
     font-size: 16px;
 }
+#category{
+    position: relative;
+    top: 12em;
+    padding: 15px 32px;
+    background-color: teal;
+    color: black;
+    font-size: 16px;
+}
 #search{
     position: relative;
     top: 1em;
-}
-.col-sm-1{
-    font-size: larger;
-    border: 2px solid teal;
-    border-radius: 1em;
-    margin: 10px;
-    border-width: 3px;
-    width: 60px;
-    height: 60px;
 }
 div {
     padding-top: 1em;
@@ -30,15 +29,6 @@ div {
 #new{
     font-size: 30px;
 }
-#userProfile{
+#description{
     border:  2px solid teal;
-}
-#login{
-    position: relative;
-    top: 12em;
-    right:1em;
-    padding: 15px 32px;
-    background-color: teal;
-    color: black;
-    font-size: 16px;
 }
