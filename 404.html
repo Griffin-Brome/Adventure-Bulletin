@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
@@ -14,13 +13,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!--css-->
-    <link rel="stylesheet" href="css/login.css">
-    <!--javascript-->
-    <script src="js/login.js"></script>
+    <link rel="stylesheet" href="css/404.css">
 </head>
 <body>
     <header>
-        <div class="jumbotron text-center" style="margin-bottom:0">
+        <div class="jumbotron text-center" id="top" style="margin-bottom:0">
             <h1 id="pageTitle">Adventure Bulletin</h1>
             <p><img src="img/Logo.png" alt="Logo" id="Logo" width=200 class="rounded-circle img-fluid"> </p>
         </div>
@@ -32,7 +29,7 @@
             <li class="nav-item"><a class="nav-link" href="sub-forum.html">Posts</a></li>
             <!--Check if user is logged in-->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle nav-link active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="login.html">Login</a>
@@ -50,26 +47,17 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
-
-
-<!--Login section-->
-<body>
-    <div class="login">
-        <!--action should request from our database-->
-        <form name=user method="POST" action="http://www.randyconnolly.com/tests/process.php" onsubmit="return validateForm()" >
-            <p>
-                <label for="user">Username:</label>
-                <input type="text" id="user" name="username" required>
-            </p>
-            <p>
-                <label for="pass">Password:</label>
-                <input type="password" id="pass" name="password" required>
-            </p>
-            <p>
-            <input class="button" id="login" type="submit" value="Login"> 
-            </p>    
-        </form>
-    </div>
-    </body>
-    
-    </html>
+<div class="content">
+    <h3>404 Page Not Found</h3>
+    <p>The page you requested does not exist.</p>
+    <p>
+        <input id="return" type="button" value="Return to home page &#8594;"> 
+    </p> 
+        <script type="text/javascript">
+            document.getElementById("return").onclick = function () {
+                location.href = "home.html";
+            };
+        </script>  
+</div>
+</body>
+</html>
