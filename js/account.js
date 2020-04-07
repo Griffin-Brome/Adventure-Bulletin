@@ -7,7 +7,6 @@ function validateForm() {
 
 
   function validateName(name){
-   
     if (name == "") {
         alert("Name must be entered");
         return false;
@@ -20,13 +19,15 @@ function validateForm() {
         return false;
     }
   }
-  //needs fixing
   function validatePasswords(pass1, pass2){
-    alert("gdgf");
     if(pass1.value != pass2.value){
         alert("Passwords do not match");
         return false;
-    }
+    
+    }else if(pass1.value == "" || pass2.value == ""){
+      alert("Must enter a password");
+      return false;
   }
+}
   
   
