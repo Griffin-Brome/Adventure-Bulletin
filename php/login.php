@@ -2,15 +2,6 @@
     include 'DBConnection.php';
     session_start();
     // validate user input server-side
-    
-    
-    
-    
-    
-    
-    
-    
-    
     try {
         // check if user exists in DB
         $pdo = openConnection();
