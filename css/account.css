@@ -1,6 +1,5 @@
 .button {
     position: relative;
-    top: 4em;
     padding: 15px 32px;
     background-color: teal;
     color: white;
@@ -9,7 +8,18 @@
 .createAccount{
     text-align: center;
     padding: 1em;
+    font-size: larger;
+    border: 2px solid teal;
+    border-radius: 1em;
+    padding: 2em;
+    border-width: 3px;
 }
-#login{
-    top: 2em
+.btn{
+    margin-bottom: 1em;
+    background-color: teal;
+    color:white;
 }
+.jumbotron{
+    height:22em;
+}
+

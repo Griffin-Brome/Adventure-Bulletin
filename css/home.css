@@ -1,25 +1,13 @@
 #pageTitle{
     font-size: 40px;
 }
-.button{
-    position: relative;
-    top: 13em;
-    padding: 15px 32px;
-    background-color: teal;
-    color: white;
-    font-size: 16px;
-}
-#search{
-    position: relative;
-    top: 1em;
-}
-.col-sm-1{
-    font-size: larger;
+
+h3{
     border: 2px solid teal;
     border-radius: 1em;
-    margin: 10px;
+    padding: 10px;
     border-width: 3px;
-    width: 60px;
+    widows: 60px;
     height: 60px;
 }
 div {
@@ -32,13 +20,13 @@ div {
 }
 #userProfile{
     border:  2px solid teal;
+    height:400px
 }
-#login{
-    position: relative;
-    top: 12em;
-    right:1em;
-    padding: 15px 32px;
+.btn{
+    margin-bottom: 1em;
     background-color: teal;
-    color: black;
-    font-size: 16px;
+    color:white;
+}
+#top{
+    height:22em;
 }
