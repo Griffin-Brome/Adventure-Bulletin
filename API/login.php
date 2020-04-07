@@ -25,5 +25,6 @@
         // return error message
 
     } 
-        // redirect to homepage
+        // redirect 
+        header('Location: ../profile.html');
 ?>
