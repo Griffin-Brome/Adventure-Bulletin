@@ -9,26 +9,32 @@
     color: white;
     font-size: 16px;
 }
-#category{
-    position: relative;
-    top: 12em;
-    padding: 15px 32px;
-    background-color: teal;
-    color: black;
-    font-size: 16px;
-}
-#search{
-    position: relative;
-    top: 1em;
-}
+
 div {
     padding-top: 1em;
     padding-right: 5px;
     padding-bottom: 1em;
   }
-#new{
-    font-size: 30px;
+
+.jumbotron{
+    height:22em;
 }
-#description{
-    border:  2px solid teal;
+.col-md-4{
+    font-size: larger;
+    border: 2px solid teal;
+    border-radius: 1em;
+    padding: 2em;
+    border-width: 3px;
+}
+.col-md-8{
+    font-size: larger;
+    border: 2px solid teal;
+    border-radius: 1em;
+    padding: 2em;
+    border-width: 3px;
+}
+.btn{
+    margin-bottom: 1em;
+    background-color: teal;
+    color:white;
 }
