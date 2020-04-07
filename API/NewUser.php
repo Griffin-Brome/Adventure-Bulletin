@@ -37,6 +37,8 @@
                 die($e->getMessage());
             }
             closeConnection($pdo);
+            header('Location: profile.html');
+            die();
         } else {
             echo '<h1 style="color:red;">Error: bad data</h1>';
         }

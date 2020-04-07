@@ -118,19 +118,19 @@
         <!--Adding a new post-->
         <div id="add-post" class="col-md-4">
                 <!--Should be submited to database with php-->
-                <form name=user method="POST" action="http://www.randyconnolly.com/tests/process.php" onsubmit="return validateForm()" >
+                <form name=user method="POST" action="./API/SavePost.php/" onsubmit="return validateForm()" >
                     <p style="font-size: large; font-weight: bold;">Add Post</p>
                     <p>
                         <label>Title</label>
-                        <input type="text" name="title" size="35">
+                        <input type="text" name="title" size="35" required>
                         <label>Category</label>
-                        <select>
+                        <select name="board">
                             <option value="skiing">Skiing</option>
                             <option value="climbing">Climbing</option>
-                            <option value="biking">Biking</option>
+                            <option value="biking">Biking</option> 
                             <option value="kayaking">Kayaking</option>
                         <select>
-                        <input type="text" id="post" name="post" size="35" height="30">
+                        <input type="text" id="post" name="post" size="35" height="30" required>
                     </p>   
                     <p>
                         <input id="sub" type="submit" value="Add"> 

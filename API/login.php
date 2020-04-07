@@ -1,14 +1,19 @@
 <?php
     include 'DBConnection.php';
+    include 'Validate.php';
+
     session_start();
     // validate user input server-side
+    $uname = Validate($_POST['uname']);
+    $pword = Validate($_POST['pword']);
+
     try {
         // check if user exists in DB
         $pdo = openConnection();
         $sql = 'SELECT uname FROM account WHERE uname = :uname AND pword = :pword';
         $statement = $pdo->prepare($sql);
-        $statement->bindValue(':uname', $_GET["uname"]);
-        $statement->bindValue(':pword', $_GET["pword"]);
+        $statement->bindValue(':uname', $uname);
+        $statement->bindValue(':pword', $pword);
         $result = $statement->execute();
     } catch (PDOException $e) {
         die($e->getMessage());
@@ -20,5 +25,6 @@
         // return error message
 
     } 
-        // redirect to homepage
+        // redirect 
+        header('Location: ../profile.html');
 ?>
