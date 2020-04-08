@@ -1,8 +1,8 @@
 <?php
+    session_start();
     include 'DBConnection.php';
     include 'Validate.php';
 
-    session_start();
     // validate user input server-side
     $uname = Validate($_POST['uname']);
     $pword = Validate($_POST['pword']);
@@ -14,17 +14,16 @@
         $statement = $pdo->prepare($sql);
         $statement->bindValue(':uname', $uname);
         $statement->bindValue(':pword', $pword);
-        $result = $statement->execute();
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        if ($result) {
+            $_SESSION["uname"] = $result[0]; 
+        } else {
+            header('Location: /login.php');
+        }
     } catch (PDOException $e) {
         die($e->getMessage());
     }
-    // if yes, write to session cookie
-    if (! is_null($result)){
-        $_SESSION['user'] = $_GET['uname'];
-    } else {
-        // return error message
 
-    } 
-        // redirect 
-        header('Location: ../profile.html');
+    header('Location: ../profile.php');
 ?>

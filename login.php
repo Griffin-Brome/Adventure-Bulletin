@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +38,7 @@
                 <a class="nav-link dropdown-toggle nav-link active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="login.html">Login</a>
+                    <a class="dropdown-item" href="login.php">Login</a>
                     <a class="dropdown-item" href="account.html">Create Account</a>
                     <a class="dropdown-item" href="admin.html">Admin</a>
                   </div>
@@ -56,7 +59,7 @@
 <body>
     <div class="login">
         <!--action should request from our database-->
-        <form name=user method="POST" action="php/login.php" onsubmit="return validateForm()" >
+        <form name=user method="POST" action="php/LoginUser.php" onsubmit="return validateForm()" >
             <p>
                 <label for="user">Username:</label>
                 <input type="text" id="user" name="username" required>
