@@ -9,6 +9,7 @@
             $sql = "SELECT post_title, post_body, uname, board_title FROM post WHERE post_title LIKE %:search%";
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':search', $search);
+            $results = $stmt->execute();
             closeConnection($pdo);
         } catch (PDOException $e) {
             die($e->getMessage());
