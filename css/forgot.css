@@ -1,0 +1,19 @@
+.button {
+    position: relative;
+    padding: 15px 32px;
+    background-color: teal;
+    color: white;
+    font-size: 16px;
+}
+.forgot{
+    text-align: center;
+    padding: 1em;
+}
+.btn{
+    margin-bottom: 1em;
+    background-color: teal;
+    color:white;
+}
+.jumbotron{
+    height:22em;
+}

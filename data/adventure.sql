@@ -6,6 +6,7 @@ CREATE TABLE account(
     birth_date DATE,
     pword VARCHAR(255),
     is_admin BOOLEAN,
+    pic_url VARCHAR(255),
     PRIMARY KEY(uname)
 ); 
 CREATE TABLE board(
