@@ -59,8 +59,8 @@
         $uname = $_SESSION["uname"];
     }
     else {
-        $_SESSION['login_error'] = TRUE;
-        header("Location: login.php");
+        $_SESSION['uname'] = 'bad';
+        //header("Location: login.php");
     }
     try {
         $pdo = openConnection();
