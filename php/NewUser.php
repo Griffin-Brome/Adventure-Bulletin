@@ -18,6 +18,8 @@
         $fullNameValid = preg_match('/[A-Z]{1}[a-z]+\\s{1}[A-Z]{1}[a-z]+/', $fullName);
         $pwordValid = preg_match('/\\S/', $pword);
 
+        $hash = password_hash($pword, PASSWORD_DEFAULT); 
+
         if ($unameValid && $emailValid && $fullNameValid && $pwordValid) {
             try {
                 // open connection and query database
@@ -30,15 +32,15 @@
                 $statement->bindValue(':email', $email);
                 $statement->bindValue(':full_name', $fullName);
                 $statement->bindValue(':birth_date', $birthDate);
-                $statement->bindValue(':pword', $pword);
+                // store hashed value in db
+                $statement->bindValue(':pword', $hash);
                 $statement->bindParam(':pic', $pic, PDO::PARAM_LOB);
                 $statement->execute();
             } catch (PDOException $e) {
                 die($e->getMessage());
             }
-            // redirect to profile page
             closeConnection($pdo);
-            header('Location: ../profile.php');
+            header('Location: ../home.php');
             $_SESSION['uname'] = $uname;
             die();
         } else {

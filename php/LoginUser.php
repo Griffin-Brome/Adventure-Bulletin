@@ -10,21 +10,24 @@
     try {
         // check if user exists in DB
         $pdo = openConnection();
-        $sql = "SELECT uname FROM `account` WHERE `uname` = :uname AND `pword` = :pword";
+        $sql = "SELECT uname, pword FROM `account` WHERE (`uname` = :uname)";
         $statement = $pdo->prepare($sql);
         $statement->bindValue(':uname', $uname);
-        $statement->bindValue(':pword', $pword);
         $statement->execute();
 
-
+        $rst = $statement->fetch(PDO::FETCH_ASSOC);
+        
         if ($statement->rowCount() > 0) {
-            $_SESSION["uname"] = $uname; 
-        } else {
-            header('Location: /login.php');
-        }
+            if (password_verify($pword, $rst['pword'])) {
+                $_SESSION["uname"] = $rst['uname']; 
+                header('Location: ../home.php');
+                die();
+            }
+        } 
     } catch (PDOException $e) {
         die($e->getMessage());
     }
+    header('Location: ../login.php');
+    exit();
 
-    header('Location: ../home.php');
 ?>
