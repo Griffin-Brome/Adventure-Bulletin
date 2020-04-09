@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,14 +31,14 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="navbar-nav">
-            <li class="nav-item" ><a class="nav-link" href="home.html">Home</a></li>
+            <li class="nav-item" ><a class="nav-link" href="home.php">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="sub-forum.html">Posts</a></li>
             <!--Check if user is logged in-->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="login.html">Login</a>
+                    <a class="dropdown-item" href="login.php">Login</a>
                     <a class="dropdown-item" href="account.html">Create Account</a>
                     <a class="dropdown-item" href="admin.html">Admin</a>
                   </div>
@@ -56,7 +59,7 @@
 <body>
     <div class="login">
         <!--action should request from our database-->
-        <form name=user method="POST" action="php/login.php" onsubmit="return validateForm()" >
+        <form name=user method="POST" action="php/LoginUser.php" onsubmit="return validateForm()" >
             <p>
                 <label for="user">Username:</label>
                 <input type="text" id="user" name="username" required>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set("display_errors", "1");
 
@@ -22,7 +23,7 @@ if (isset($_SESSION['user'])) { // must be logged in to post
             $statement->bindValue(":board", $board);
             $statement->execute();
             closeConnection($pdo);
-            header("Location: sub-forum.html");
+            header("Location: ../sub-forum.html");
             die();
         } catch (PDOException $e) {
             die($e->getMessage());
