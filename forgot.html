@@ -14,9 +14,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!--css-->
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/forgot.css">
     <!--javascript-->
-    <script src="js/login.js"></script>
+    <script src="js/forgot.js"></script>
+    
 </head>
 <body>
     <header>
@@ -35,7 +36,7 @@
                 <a class="nav-link dropdown-toggle nav-link active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="login.html">Login</a>
+                    <a class="dropdown-item" href="login.php">Login</a>
                     <a class="dropdown-item" href="account.html">Create Account</a>
                     <a class="dropdown-item" href="admin.html">Admin</a>
                   </div>
@@ -52,24 +53,18 @@
 </nav>
 
 
-<!--Login section-->
 <body>
-    <div class="login">
-        <!--action should request from our database-->
-        <form name=user method="POST" action="\COSC_360_Project\php\login.php" onsubmit="return validateForm()" >
+    <div class="forgot">
+        <form name=user method="POST" action="php/forgot.php" onsubmit="return validateForm()" >
             <p>
-                <label for="user">Username:</label>
-                <input type="text" id="user" name="username" required>
+                <label for="email">Please enter the email you used to signed up with:</label>
+                <input type="email" name="email" id="email" required>
             </p>
             <p>
-                <label for="pass">Password:</label>
-                <input type="password" id="pass" name="password" required>
+                <input class="button" type="submit" value="Submit">
             </p>
-            <p>
-            <input class="button" id="login" type="submit" value="Login"> 
-            </p>    
         </form>
     </div>
-    </body>
+</body>
     
-    </html>
+</html>
