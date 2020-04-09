@@ -30,6 +30,7 @@
         <ul class="navbar-nav">
             <li class="nav-item" ><a class="nav-link nav-link active" href="#">Home</a></li> 
             <li class="nav-item"><a class="nav-link" href="sub-forum.html">Posts</a></li>
+            <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
             <!--Check if user is logged in-->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
@@ -79,10 +80,10 @@
                 <p id='username'>Username: $user</p>
                 <p id='Interests'>Interest: </p>
                 <p id='userImg'><img src='img/user.png' width=100></p>
-                <p><button class='btn' id='settings'><i class='fas fa-user-cog'></i></p>\
+                <p><button class='btn' id='settings' value='Edit Profile'>Edit Profile</p>
                     <script type='text/javascript'>
                         document.getElementById('settings').onclick = function () {
-                            location.href = 'profile.php';
+                            location.href = 'edit-profile.html';
                         echo };
                     </script>
             </div>";
