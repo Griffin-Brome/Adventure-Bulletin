@@ -42,7 +42,7 @@
                   </div>
             </li>
         </ul>        
-        <form class="form-inline my-2 my-lg-0" method="GET" action="php/Search.php" >
+        <form class="form-inline my-2 my-lg-0" method="GET" action="search-results.php" >
             <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" id="search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
@@ -59,7 +59,8 @@
             <?php
                 include "php/DBConnection.php";
                 $pdo = openConnection();
-                $sql = "SELECT post_title, post_body, uname, board_title, post_time FROM post ORDER BY post_time DESC LIMIT 10";                $stmt = $pdo->prepare($sql);
+                $sql = "SELECT post_title, post_body, uname, board_title, post_time FROM post ORDER BY post_time DESC LIMIT 10";                
+                $stmt = $pdo->prepare($sql);
                 $stmt->execute();
                 while ($rst = $stmt->fetch()) {
                     echo "<h3>$rst[0]</h3>";
