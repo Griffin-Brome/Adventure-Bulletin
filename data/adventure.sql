@@ -48,7 +48,7 @@ CREATE TABLE contains_post(
     PRIMARY KEY(post_id, board_title)
 );
 
-CREATE TABLE interest(
-    interest_name VARCHAR(255),
-    PRIMARY KEY (interest_name)
-);
+INSERT INTO board VALUES ('Skiing');
+INSERT INTO board VALUES ('Hiking');
+INSERT INTO board VALUES ('Climbing');
+INSERT INTO board VALUES ('Kayaking');

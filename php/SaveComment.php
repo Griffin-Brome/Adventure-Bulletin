@@ -6,9 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $uname = Validate($_POST['uname']);
     $commentId = Validate($_POST['commentId']);
     $commentBody = Validate($_POST['commentBody']);
-    $postId = Validate($_POST['postId']);
 
-    if ($uname && $commentId && $commentBody && $postId) {
+    if ($uname && $commentId && $commentBody) {
         try {
             $pdo = openConnection();
             // execute query

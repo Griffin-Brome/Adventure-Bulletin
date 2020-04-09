@@ -48,18 +48,35 @@
     </button>
 </nav>
 <!--Start of results-->
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Search Results</h1>
-            <h3>1</h3>
-            <p id="post1"></p>
-            <h3>2</h3>
-            <p id="post1"></p>
-            <h3>3</h3>
-            <p id="post1"></p>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <h1>Search Results</h1>
+                <?php
+                    include 'DBConnection.php';
+                    include 'Validate.php';
+
+                    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                        $search = Validate($_GET['search']);
+                        try {
+                            $pdo = openConnection();
+                            $sql = "SELECT post_title, post_body, uname, board_title FROM post WHERE post_title LIKE %:search%";
+                            $stmt = $pdo->prepare($sql);
+                            $stmt->bindValue(':search', $search);
+                            $stmt->execute();
+                            while ($rst = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<h3>$rst[0]</h3>";
+                                echo "<p id='post'>$rst[1]</p>";
+                            }
+                            closeConnection($pdo);
+                        } catch (PDOException $e) {
+                            die($e->getMessage());
+                        } 
+                    }
+                ?>
+            </div>
         </div>
     </div>
-</div>
+
 </body>
 </html>
