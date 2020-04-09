@@ -39,7 +39,7 @@
             // redirect to profile page
             closeConnection($pdo);
             header('Location: ../profile.php');
-            $_SESSION['user'] = $uname;
+            $_SESSION['uname'] = $uname;
             die();
         } else {
             echo '<h1 style="color:red;">Error: bad data</h1>';

@@ -6,28 +6,39 @@ ini_set("display_errors", "1");
 include 'DBConnection.php'; 
 include 'Validate.php';
 
-if (isset($_SESSION['user'])) { // must be logged in to post
-    $user = $_SESSION['user'];
+if (isset($_SESSION['uname'])) { // must be logged in to post
+    $user = $_SESSION['uname'];
     if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
-        $title = Validate($_GET['title']);
-        $body = Validate($_GET['post']);
-        $board = Validate($_GET['board']);
+        $title = Validate($_POST['title']);
+        $body = Validate($_POST['post']);
+        $board = Validate($_POST['category']);
         try {
             $pdo = openConnection();    
-            $sql = "INSERT INTO post (post_title, post_body, uname, board) 
-            VALUES (:post_title, :post_body, :uname, :board)";
+            
+            $sql = "INSERT INTO post (post_title, post_body, uname, board_title, post_time) 
+            VALUES (:post_title, :post_body, :uname, :board, :post_time)";
+            
+            //'YYYY-MM-DD hh:mm:ss' 
+            $datetime = date("Y-m-d H:i:s");
+
             $statement = $pdo->prepare($sql);
-            $statement->bindValue(":post_title", $title);
-            $statement->bindValue(":post_body", $body);
-            $statement->bindValue(":uname", $user);
-            $statement->bindValue(":board", $board);
+            $statement->bindParam(":post_title", $title);
+            $statement->bindParam(":post_body", $body);
+            $statement->bindParam(":uname", $user);
+            $statement->bindParam(":board", $board);
+            $statement->bindParam(":post_time", $datetime);
             $statement->execute();
+            
             closeConnection($pdo);
-            header("Location: ../sub-forum.html");
+            
+            header("Location: ../../sub-forum.html");
             die();
         } catch (PDOException $e) {
             die($e->getMessage());
         }
     }
+} else {
+    // todo fix this
+    echo $_SESSION['uname'];
 }
 ?>
