@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,28 +130,32 @@
         <!--End of posts-->
         
         <!--Adding a new post-->
-        <div id="add-post" class="col-md-4">
-                <!--Should be submited to database with php-->
-                <form name=new-post method="POST" action="./php/SavePost.php/" onsubmit="return validateForm()" >
-                    <p style="font-size: large; font-weight: bold;">Add Post</p>
-                    <p>
-                        <label>Title</label>
-                        <input type="text" name="title" size="35" required>
-                        <label>Category</label>
-                        <select name="category">
-                            <option value="Skiing">Skiing</option>
-                            <option value="Climbing">Climbing</option>
-                            <option value="Biking">Biking</option> 
-                            <option value="Kayaking">Kayaking</option>
-                        <select>
-                        <textarea name="post" id="post" style="width:300px; height:300px;">
-                        </textarea>
-                    </p>   
-                    <p>
-                        <input id="sub" type="submit" value="Add"> 
-                    </p>    
-                </form>
-        </div>
+        <!--Should be submited to database with php-->
+        <?php
+            if (isset($_POST['uname'])) {
+                echo "<div id='add-post' class='col-md-4'>
+                    <form name=new-post method='POST' action='./php/SavePost.php/' onsubmit='return validateForm()' >
+                        <p style='font-size: large; font-weight: bold;'>Add Post</p>
+                        <p>
+                            <label>Title</label>
+                            <input type='text' name='title' size='35' required>
+                            <label>Category</label>
+                            <select name='category'>
+                                <option value='Skiing'>Skiing</option>
+                                <option value='Climbing'>Climbing</option>
+                                <option value='Biking'>Biking</option> 
+                                <option value='Kayaking'>Kayaking</option>
+                            <select>
+                            <textarea name='post' id='post' style='width:300px; height:300px;'>
+                            </textarea>
+                        </p>   
+                        <p>
+                            <input id='sub' type='submit' value='Add'> 
+                        </p>    
+                    </form>
+            </div>"; 
+            }    
+        ?>
     </div>          
 </body>
 

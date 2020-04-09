@@ -33,20 +33,6 @@ CREATE TABLE comment(
     FOREIGN KEY (post_id) REFERENCES post(post_id),
     PRIMARY KEY(comment_id)
 ); 
-CREATE TABLE joined_board(
-    uname VARCHAR(255),
-    board_title VARCHAR(255),
-    FOREIGN KEY (uname) REFERENCES account(uname),
-    FOREIGN KEY (board_title) REFERENCES board(board_title),
-    PRIMARY KEY(uname, board_title)
-); 
-CREATE TABLE contains_post(
-    post_id INT,
-    board_title VARCHAR(255),
-    FOREIGN KEY (post_id) REFERENCES post(post_id),
-    FOREIGN KEY (board_title) REFERENCES board(board_title),
-    PRIMARY KEY(post_id, board_title)
-);
 
 INSERT INTO board VALUES ('Skiing');
 INSERT INTO board VALUES ('Hiking');
