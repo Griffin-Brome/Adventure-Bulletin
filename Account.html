@@ -54,7 +54,10 @@
 <!--Login section-->
     <div class="createAccount">
         <form onsubmit="validateForm()" name="create" method="POST" action="php/NewUser.php">
-
+        <p>
+            <label for="pic">Upload a Profile Picture:</label>
+            <input type="file" name="pic" id="pic" required>
+        </p> 
         <p>
             <label for="name">First and Last Name:</label>
             <input type="text" id="full_name" name="full_name">
