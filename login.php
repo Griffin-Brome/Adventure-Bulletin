@@ -33,6 +33,7 @@
         <ul class="navbar-nav">
             <li class="nav-item" ><a class="nav-link" href="home.php">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="sub-forum.html">Posts</a></li>
+            <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
             <!--Check if user is logged in-->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
