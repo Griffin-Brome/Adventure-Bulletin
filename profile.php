@@ -29,7 +29,7 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="navbar-nav">
-            <li class="nav-item" ><a class="nav-link" href="home.html">Home</a></li>
+            <li class="nav-item" ><a class="nav-link" href="home.php">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="sub-forum.html">Posts</a></li>
             <!--Check if user is logged in-->
             <li class="nav-item dropdown">
@@ -57,73 +57,66 @@
     include "php/DBConnection.php";
     if (isset($_SESSION["uname"])) {
         $uname = $_SESSION["uname"];
-    }
-    else {
-        $_SESSION['uname'] = 'bad';
-        //header("Location: login.php");
-    }
-    try {
-        $pdo = openConnection();
-        // get the users profile pic        
-        $sql = "SELECT pic FROM account WHERE uname = :uname";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':uname', $uname);
-        $stmt->execute();
-        
-        $rst = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($rst) {
-            header("Content-type: image/jpeg");
-            echo($rst[0]); // output the image
-        }
-        echo "<div class='container'>\n";
-            echo "<div class='row'>\n";
-                echo "<div class='col-md-4'>\n";
-                $rst = $stmt->fetch(PDO::FETCH_ASSOC);
-                if ($rst) {
-                    header("Content-type: image/jpeg");
-                    echo($rst[0]); // output the image
-                    echo("\n");
-                }
-                echo "</div>\n";
-                echo "<div class='col-md-8' >\n";
-                    echo "<h3>Username:</h3>\n";
-                    echo "<p id='username' >$uname</p>\n";
-                    echo "<h3>Interests:</h3>\n";
-                    echo "<p id='interests'></p>\n";
-                echo "</div>\n";
-                // get the users posts 
-                $sql = "SELECT post_title, post_body, board_title FROM post WHERE uname = :uname";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(':uname', $uname);
-                $stmt->execute();
-        
-                echo "</div>\n";
-            echo "<div class='row'>\n";
-                echo "<div class='col-md-8'>\n";
-                    echo "<h1>Posts</h1>\n";
-                    $i = 1;
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<h3>$row[0]</h3>";
-                        $i = $i + 1;
-                        echo "<p id='post'>$row[1]</p>";
-                    }
-                echo "</div>\n";
+    
+        try {
+            $pdo = openConnection();
+            // get the users profile pic        
+            // $sql = "SELECT pic FROM account WHERE uname = :uname";
+            // $stmt = $pdo->prepare($sql);
+            // $stmt->bindParam(':uname', $uname);
+            // $stmt->execute();
+            
+            
+            echo "<div class='container'>\n";
+                echo "<div class='row'>\n";
+                    echo "<div class='col-md-4'>\n";
+                    // $rst = $stmt->fetch(PDO::FETCH_ASSOC);
+                    // if ($rst) {
+                    //     header("Content-type: image/jpeg");
+                    //     echo($rst[0]); // output the image
+                    //     echo("\n");
+                    // }
+                    echo "</div>\n";
+                    echo "<div class='col-md-8' >\n";
+                        echo "<h3>Username:</h3>\n";
+                        echo "<p id='username' >$uname</p>\n";
+                        echo "<h3>Interests:</h3>\n";
+                        echo "<p id='interests'></p>\n";
+                    echo "</div>\n";
+                    // get the users posts 
+                    $sql = "SELECT post_title, post_body, board_title FROM post WHERE uname = :uname";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindParam(':uname', $uname);
+                    $stmt->execute();
+            
+                    echo "</div>\n";
+                echo "<div class='row'>\n";
+                    echo "<div class='col-md-8'>\n";
+                        echo "<h1>Posts</h1>\n";
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            echo "<h3>$row[0]</h3>";
+                            echo "<p id='post'>$row[1]</p>";
+                        }
+                    echo "</div>\n";
 
-                $sql = "SELECT board_title FROM joined_board WHERE uname = :uname";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(':uname', $uname);
-                $stmt->execute();
-                
-                echo "<div class='col-md-4'>\n";
-                    echo "<h3>Sub-Forums:</h3>\n";
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<p id='sub-forum'>$row[0]</p>";
-                    }
+                    $sql = "SELECT board_title FROM joined_board WHERE uname = :uname";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindParam(':uname', $uname);
+                    $stmt->execute();
+                    
+                    echo "<div class='col-md-4'>\n";
+                        echo "<h3>Sub-Forums:</h3>\n";
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            echo "<p id='sub-forum'>$row[0]</p>";
+                        }
+                    echo "</div>\n";
                 echo "</div>\n";
             echo "</div>\n";
-        echo "</div>\n";
-    } catch (PDOException $e) {
-        die($e->getMessage());
+            }   catch (PDOException $e) {
+                    die($e->getMessage());
+                }
+    } else {
+        header("Location: login.php");
     }
     ?>
 </body>

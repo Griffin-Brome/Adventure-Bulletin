@@ -31,7 +31,7 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="navbar-nav">
-            <li class="nav-item" ><a class="nav-link" href="home.html">Home</a></li>
+            <li class="nav-item" ><a class="nav-link" href="home.php">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="sub-forum.html">Posts</a></li>
             <!--Check if user is logged in-->
             <li class="nav-item dropdown">

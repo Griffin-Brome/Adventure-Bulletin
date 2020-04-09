@@ -4,11 +4,8 @@
     include 'Validate.php';
 
     // validate user input server-side
-   # $uname = Validate($_POST['uname']);
-   # $pword = Validate($_POST['pword']);
-
-   $uname = $_POST['username'];
-   $pword = $_POST['password'];
+   $uname = Validate($_POST['username']);
+   $pword = Validate($_POST['password']);
 
     try {
         // check if user exists in DB
@@ -29,5 +26,5 @@
         die($e->getMessage());
     }
 
-    header('Location: ../profile.php');
+    header('Location: ../home.php');
 ?>

@@ -1,7 +1,9 @@
+<?php 
+    session_start()
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sub-Forum</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
@@ -14,11 +16,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!--css-->
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
     <header>
-        <div class="jumbotron text-center" style="margin-bottom:0">
+        <div class="jumbotron text-center" id="top" style="margin-bottom:0">
             <h1 id="pageTitle">Adventure Bulletin</h1>
             <p><img src="img/Logo.png" alt="Logo" id="Logo" width=200 class="rounded-circle img-fluid"> </p>
         </div>
@@ -26,7 +28,7 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="navbar-nav">
-            <li class="nav-item" ><a class="nav-link" href="home.php">Home</a></li>
+            <li class="nav-item" ><a class="nav-link nav-link active" href="#">Home</a></li> 
             <li class="nav-item"><a class="nav-link" href="sub-forum.html">Posts</a></li>
             <!--Check if user is logged in-->
             <li class="nav-item dropdown">
@@ -38,9 +40,9 @@
                     <a class="dropdown-item" href="admin.html">Admin</a>
                   </div>
             </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </ul>        
+        <form class="form-inline my-2 my-lg-0" method="GET" action="php/Search.php" >
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" id="search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
     </div> 
@@ -48,32 +50,46 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
-<!--Sould be pulling all this info from database-->
+<!--Start of posts-->
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <p id="picture"><img src="img/user.png" width=100></p>
-        </div>
-        <div class="col-md-8" >
-            <h3>Admin:</h3>
-            <p id="admin" ></p>
-            <h3>Banned users:</h3>
-            <p id="banned"></p>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-8">
-            <h1>Removed Posts</h1>
-            <h3>1</h3>
-            <p id="post1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <h3>2</h3>
-            <p id="post1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>   
+            <h1>New Posts</h1>
+            <?php
+                include "php/DBConnection.php";
+                $pdo = openConnection();
+                $sql = "SELECT post_title, post_body, uname, board_title FROM post LIMIT 10 ORDER BY post_time DESC";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+                while ($rst = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<h3>$rst[0]</h3>";
+                    echo "<p id='post'>$rst[1]</p>";
+                }
+            ?>
         </div>
-        <div class="col-md-4">
-            <h3>Remmoved Sub-Forums:</h3>
-            <p id="sub-forum"></p>
-        </div>
-    </div>
+    <!--End of posts-->
+    
+    <!--User profile-->
+    <?php
+        if (isset($_SESSION['uname'])) {
+            $user = $_SESSION['uname'];
+      
+            echo "<div class='col-md-4' id='userProfile'>
+                <h3>User Profile</h3>
+                <p id='username'>Username: $user</p>
+                <p id='Interests'>Interest: </p>
+                <p id='userImg'><img src='img/user.png' width=100></p>
+                <p><button class='btn' id='settings'><i class='fas fa-user-cog'></i></p>\
+                    <script type='text/javascript'>
+                        document.getElementById('settings').onclick = function () {
+                            location.href = 'profile.php';
+                        echo };
+                    </script>
+            </div>";
+    } 
+?>
 </div>
+<!--End user profile-->
 </body>
+
 </html>
