@@ -16,8 +16,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!--css-->
     <link rel="stylesheet" href="css/sub-forum.css">
+<<<<<<< HEAD
+    <!--javascript-->
+    <script src="js/sub-forum.js"></script>
+=======
     <!--js-->
     <script src="js/post.js"></script>
+>>>>>>> master
 </head>
 <body>
     <header>
@@ -120,19 +125,32 @@
         <!--Adding a new post-->
         <div id="add-post" class="col-md-4">
                 <!--Should be submited to database with php-->
+<<<<<<< HEAD
+                <form name="new-post" method="POST" action="http://www.randyconnolly.com/tests/process.php" onsubmit="return validateForm()" >
+=======
                 <form name=user method="POST" action="./php/SavePost.php/" onsubmit="return validateForm()" >
+>>>>>>> master
                     <p style="font-size: large; font-weight: bold;">Add Post</p>
                     <p>
                         <label>Title</label>
                         <input type="text" name="title" size="35" required>
                         <label>Category</label>
+<<<<<<< HEAD
+                        <select name="category">
+=======
                         <select name="board">
+>>>>>>> master
                             <option value="skiing">Skiing</option>
                             <option value="climbing">Climbing</option>
                             <option value="biking">Biking</option> 
                             <option value="kayaking">Kayaking</option>
                         <select>
+<<<<<<< HEAD
+                        <textarea name="post" id="post" style="width:300px; height:300px;">
+                        </textarea>
+=======
                         <input type="text" id="post" name="post" size="35" height="30" required>
+>>>>>>> master
                     </p>   
                     <p>
                         <input id="sub" type="submit" value="Add"> 
