@@ -59,10 +59,9 @@
             <?php
                 include "php/DBConnection.php";
                 $pdo = openConnection();
-                $sql = "SELECT post_title, post_body, uname, board_title FROM post LIMIT 10 ORDER BY post_time DESC";
-                $stmt = $pdo->prepare($sql);
+                $sql = "SELECT post_title, post_body, uname, board_title, post_time FROM post ORDER BY post_time DESC LIMIT 10";                $stmt = $pdo->prepare($sql);
                 $stmt->execute();
-                while ($rst = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                while ($rst = $stmt->fetch()) {
                     echo "<h3>$rst[0]</h3>";
                     echo "<p id='post'>$rst[1]</p>";
                 }

@@ -20,7 +20,7 @@
         if ($statement->rowCount() > 0) {
             if (password_verify($pword, $rst['pword'])) {
                 $_SESSION["uname"] = $rst['uname']; 
-                header('Location: ../home.php');
+                header('Location: /Adventure-Bulletin/home.php');
                 die();
             }
         } 

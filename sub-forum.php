@@ -132,7 +132,7 @@
         <!--Adding a new post-->
         <!--Should be submited to database with php-->
         <?php
-            if (isset($_POST['uname'])) {
+            if (isset($_SESSION['uname'])) {
                 echo "<div id='add-post' class='col-md-4'>
                     <form name=new-post method='POST' action='./php/SavePost.php/' onsubmit='return validateForm()' >
                         <p style='font-size: large; font-weight: bold;'>Add Post</p>

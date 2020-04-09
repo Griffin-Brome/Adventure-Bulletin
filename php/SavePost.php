@@ -31,7 +31,7 @@ if (isset($_SESSION['uname'])) { // must be logged in to post
             
             closeConnection($pdo);
             
-            header("Location: ../../sub-forum.html");
+            header("Location: /Adventure-Bulletin/sub-forum.php");
             die();
         } catch (PDOException $e) {
             die($e->getMessage());
