@@ -6,7 +6,7 @@ CREATE TABLE account(
     birth_date DATE,
     pword VARCHAR(255),
     is_admin BOOLEAN,
-    pic_url VARCHAR(255),
+    pic BLOB,
     PRIMARY KEY(uname)
 ); 
 CREATE TABLE board(
@@ -19,6 +19,7 @@ CREATE TABLE post(
     post_body VARCHAR(1000),
     uname VARCHAR(255),
     board_title VARCHAR(255),
+    post_time DATETIME,
     FOREIGN KEY (uname) REFERENCES account(uname),
     FOREIGN KEY (board_title) REFERENCES board(board_title),
     PRIMARY KEY(post_id)
@@ -46,3 +47,8 @@ CREATE TABLE contains_post(
     FOREIGN KEY (board_title) REFERENCES board(board_title),
     PRIMARY KEY(post_id, board_title)
 );
+
+INSERT INTO board VALUES ('Skiing');
+INSERT INTO board VALUES ('Hiking');
+INSERT INTO board VALUES ('Climbing');
+INSERT INTO board VALUES ('Kayaking');
