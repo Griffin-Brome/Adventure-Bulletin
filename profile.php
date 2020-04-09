@@ -31,6 +31,7 @@
         <ul class="navbar-nav">
             <li class="nav-item" ><a class="nav-link" href="home.php">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="sub-forum.html">Posts</a></li>
+            <li class="nav-item"><a class="nav-link nav-link active" href="profile.php">Profile</a></li>
             <!--Check if user is logged in-->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
@@ -119,6 +120,12 @@
         header("Location: login.php");
     }
     ?>
+    <p><button style="margin-left: 45%; font-size: 30px"  class='btn'>Edit Profile</p>
+        <script type='text/javascript'>
+            document.getElementById('settings').onclick = function () {
+            location.href = 'edit-profile.html';
+            };
+        </script>
 </body>
 </main>
 </html>

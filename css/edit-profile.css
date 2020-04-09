@@ -1,0 +1,24 @@
+.button {
+    position: relative;
+    padding: 15px 32px;
+    background-color: teal;
+    color: white;
+    font-size: 16px;
+}
+.createAccount{
+    text-align: center;
+    padding: 1em;
+    font-size: larger;
+    border: 2px solid teal;
+    border-radius: 1em;
+    padding: 2em;
+    border-width: 3px;
+}
+.btn{
+    margin-bottom: 1em;
+    background-color: teal;
+    color:white;
+}
+.jumbotron{
+    height:22em;
+}
