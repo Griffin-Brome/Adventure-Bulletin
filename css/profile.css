@@ -33,7 +33,11 @@ div {
     margin-bottom: 1em;
     background-color: teal;
     color:white;
+    margin-left: 35em;
 }
 .jumbotron{
     height:22em;
+}
+#edit{
+    margin-left: 45%;
 }
