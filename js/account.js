@@ -28,15 +28,4 @@ function validateForm() {
       return false;
   }
 }
-// function checkAvailability() {
-//   jQuery.ajax({
-//     url: "php\CheckUsername.php",
-//     data:'username='+$("#username").val(),
-//     type: "POST",
-//     success:function(data){
-//         $("#user-availability-status").html(data);
-//     },
-//     error:function (){}
-//   });
-//   }
   
