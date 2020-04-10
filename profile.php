@@ -70,6 +70,7 @@
             echo "<div class='container'>\n";
                 echo "<div class='row'>\n";
                     echo "<div class='col-md-4'>\n";
+                    echo "<p id='picture'><img src='img/user.png' width=100></p>";
                     // $rst = $stmt->fetch(PDO::FETCH_ASSOC);
                     // if ($rst) {
                     //     header("Content-type: image/jpeg");
@@ -93,7 +94,7 @@
                 echo "<div class='row'>\n";
                     echo "<div class='col-md-8'>\n";
                         echo "<h1>Posts</h1>\n";
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        while ($row = $stmt->fetch()) {
                             echo "<h3>$row[0]</h3>";
                             echo "<p id='post'>$row[1]</p>";
                         }
@@ -106,7 +107,7 @@
                     
                     echo "<div class='col-md-4'>\n";
                         echo "<h3>Sub-Forums:</h3>\n";
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        while ($row = $stmt->fetch()) {
                             echo "<p id='sub-forum'>$row[0]</p>";
                         }
                     echo "</div>\n";
