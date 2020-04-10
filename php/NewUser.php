@@ -40,8 +40,8 @@
                 die($e->getMessage());
             }
             closeConnection($pdo);
-            header('Location: ../home.php');
             $_SESSION['uname'] = $uname;
+            header('Location: ../home.php');
             die();
         } else {
             echo '<h1 style="color:red;">Error: bad data</h1>';

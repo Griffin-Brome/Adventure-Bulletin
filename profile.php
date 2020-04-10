@@ -65,8 +65,6 @@
             // $stmt = $pdo->prepare($sql);
             // $stmt->bindParam(':uname', $uname);
             // $stmt->execute();
-            
-            
             echo "<div class='container'>\n";
                 echo "<div class='row'>\n";
                     echo "<div class='col-md-4'>\n";

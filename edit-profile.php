@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +54,7 @@
 <!--Edit account info-->
     <div class="createAccount">
         <!--Action should be changed to edit account php file -->
-        <form onsubmit="validateForm()" name="create" method="POST" action="php/NewUser.php">
+        <form onsubmit="validateForm()" name="create" method="POST" action="php/UpdateAccount.php">
         <p>
             <label for="pic">Upload a New Profile Picture:</label>
             <input type="file" name="pic" id="pic">
