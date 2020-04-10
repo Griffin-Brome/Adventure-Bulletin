@@ -33,7 +33,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="login.html">Login</a>
                     <a class="dropdown-item" href="account.html">Create Account</a>
-                    <a class="dropdown-item" href="admin.html">Admin</a>
+                    <a class="dropdown-item" href="admin.php">Admin</a>
                   </div>
             </li>
         </ul>
