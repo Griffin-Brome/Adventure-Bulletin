@@ -29,6 +29,7 @@ CREATE TABLE comment(
     comment_id INT NOT NULL AUTO_INCREMENT,
     comment_body VARCHAR(1000),
     post_id INT,
+    comment_time DATETIME,
     FOREIGN KEY (uname) REFERENCES account(uname),
     FOREIGN KEY (post_id) REFERENCES post(post_id),
     PRIMARY KEY(comment_id)

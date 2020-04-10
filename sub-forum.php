@@ -47,10 +47,10 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item">Skiing</a>
-                    <a class="dropdown-item">Biking</a>
-                    <a class="dropdown-item">Climbing</a>
-                    <a class="dropdown-item">Kayaking</a>
+                    <a class="dropdown-item" href="sub-forum.php?sub=Skiing">Skiing</a>
+                    <a class="dropdown-item" href="sub-forum.php?sub=Biking">Biking</a>
+                    <a class="dropdown-item" href="sub-forum.php?sub=Climbing">Climbing</a>
+                    <a class="dropdown-item" href="sub-forum.php?sub=Kayaking">Kayaking</a>
                   </div>
             </li>
         </ul>
@@ -67,64 +67,56 @@
     <div class="row">
         <div class="col-md-8">
             <h1>Posts</h1>
-            <h3>1</h3>
-            <p id="post1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <button type="button" class="btn" data-toggle="collapse" data-target="#c1">Comments</button>
-            <div id="c1" class="collapse">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <!--Add New Comment-->
-            <button type="button" class="btn" data-toggle="collapse" data-target="#new1">Add Comment</button>
-            <div id="new1" class="collapse">
-                <form name=new-post method="POST" action="./php/SaveComment.php/" >
-                    <p>
-                        <textarea name="post" id="post" style="width:500px; height:200px;"></textarea>
-                    </p>   
-                    <p>
-                        <input id="sub" type="submit" value="Add"> 
-                    </p>    
-                </form>
-            </div>
-            <h3>2</h3>
-            <p id="post2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <button type="button" class="btn" data-toggle="collapse" data-target="#c2">Comments</button>
-            <div id="c2" class="collapse">           
-                <p">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <button type="button" class="btn" data-toggle="collapse" data-target="#new2">Add Comment</button>
-            <div id="new2" class="collapse">
-                <form name=new-post method="POST" action="./php/SaveComment.php/" >
-                    <p>
-                        <textarea name="post" id="post" style="width:500px; height:200px;"></textarea>
-                    </p>   
-                    <p>
-                        <input id="sub" type="submit" value="Add"> 
-                    </p>    
-                </form>
-            </div>
-            <h3>3</h3>
-            <p id="post3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <button type="button" class="btn" data-toggle="collapse" data-target="#c3">Comments</button>
-            <div id="c3" class="collapse">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <button type="button" class="btn" data-toggle="collapse" data-target="#new3">Add Comment</button>
-            <div id="new3" class="collapse">
-                <form name=new-post method="POST" action="./php/SaveComment.php/" >
-                    <p>
-                        <textarea name="post" id="post" style="width:500px; height:200px;"></textarea>
-                    </p>   
-                    <p>
-                        <input id="sub" type="submit" value="Add"> 
-                    </p>    
-                </form>
-            </div>
+                <?php
+                    include 'php/DBConnection.php';
+                    include 'php/Validate.php';
+                    $pdo = openConnection();
+                    if (isset($_GET['sub'])) {
+                        $sub = Validate($_GET['sub']);
+                        $sql = "SELECT post_title, post_body, uname, board_title, post_time, post_id FROM post WHERE board_title = :sub ORDER BY post_time DESC LIMIT 10";
+                        $stmt = $pdo->prepare($sql);
+                        $stmt->bindValue(':sub', $sub);
+                    } else {
+                        $sql = "SELECT post_title, post_body, uname, board_title, post_time, post_id FROM post ORDER BY post_time DESC LIMIT 10";
+                        $stmt = $pdo->prepare($sql);                
+                    }
+                    $stmt->execute(); 
+                    $postNum = 1;
+                    while ($rst = $stmt->fetch()) {
+                        // show post
+                        echo "<h3>$rst[0]</h3>";
+                        echo "<p id='post'>$rst[1]</p>";
+                        echo "<button type='button' class='btn' data-toggle='collapse' data-target='#c$postNum'>Comments</button>";
+                        echo "<div id='c$postNum' class='collapse'>";
+                        // show comments
+                        $pdo2 = openConnection();
+                        $id = $rst[5];
+                        $sql2 = "SELECT uname, comment_body, comment_time FROM comment WHERE post_id = $id";
+                        $stmt2 = $pdo->prepare($sql2);
+                        $stmt2->execute();
+                        while ($rst2 = $stmt2->fetch()) {
+                            echo "<p>$rst2[1]</p>";
+                            echo "<br><br>";
+                            echo "<h5>Posted by $rst2[0] @ $rst2[2]</h5>";
+                        }
+                        closeConnection($pdo2);
+                        echo "</div>";
+                            echo "<button type='button' class='btn' data-toggle='collapse' data-target='#new$postNum'>Add Comment</button>
+                            <div id='new$postNum' class='collapse'>
+                                <form name=new-post method='POST' action='./php/SaveComment.php/'>
+                                    <p>
+                                        <textarea id='post' name='commentBody' style='width:500px; height:200px;'></textarea>
+                                    </p>   
+                                    <p>
+                                        <input id='sub' type='submit' value='Add'> 
+                                    </p>
+                                    <input type='hidden' id='postId' name='postId' value='$rst[5]'>     
+                                </form>
+                            </div>";
+                        $postNum = $postNum + 1;
+                    }
+                    closeConnection($pdo);
+                ?>    
         </div>
         <!--End of posts-->
         
