@@ -1,23 +1,27 @@
 <?php
+session_start();
 include 'DBConnection.php'; 
 include 'Validate.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // validate for XSS
-    $uname = Validate($_POST['uname']);
-    $commentId = Validate($_POST['commentId']);
+    if (isset($_SESSION['uname'])) {
+        $uname = $_SESSION['uname'];
+    }
     $commentBody = Validate($_POST['commentBody']);
-
-    if ($uname && $commentId && $commentBody) {
+    $postId = $_POST['postId'];
         try {
             $pdo = openConnection();
             // execute query
-            $sql = "INSERT INTO comment (uname, comment_id, comment_body, post_id) 
-                    VALUES (:uname, :comment_id, :comment_body, :post_id)";    
+            $sql = "INSERT INTO comment (uname, comment_body, post_id, comment_time) 
+                    VALUES (:uname, :comment_body, :post_id, :comment_time)";    
+            
+            $datetime = date("Y-m-d H:i:s");
+
             $statement = $pdo->prepare($sql);
             $statement->bindValue(":uname", $uname);
-            $statement->bindValue(":commentId", $commentId);
             $statement->bindValue(":comment_body", $commentBody);
             $statement->bindValue(":post_id", $postId);
+            $statement->bindValue(":comment_time", $datetime);
             
             $statement->execute();
             // handle connection errors
@@ -26,8 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     // free resources and close connection 
     closeConnection($pdo);
-    } else {
-        echo '<h1 style="color:red;">Error: bad data</h1>';
-    }
 }
+header("Location: /Adventure-Bulletin/sub-forum.php"); //todo add get?
 ?>

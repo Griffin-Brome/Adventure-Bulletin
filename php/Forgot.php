@@ -9,28 +9,31 @@
         $sql = "SELECT uname, pword FROM account WHERE email = :email";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':email', $email);
-        $result = $stmt->execute();
-        $row = $result->fetch();
-        closeConnection($pdo);
-    } catch (PDOException $e) {
-        die($e->getMessage());
-    }
-        $uname = $row['uname'];
-        $pword = $row['pword'];
+        $stmt->execute();
 
-    // send email
-    $to = 'abc@gmail.com';
-    $subject = 'Your account details';
-    $txt = "Username: $uname\nPassword: $pword";
-    $headers = 'From: Site Admins';
-    $x=mail($to,$subject,$txt,$headers);
+        if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $uname = $row['uname'];
+            $pword = $row['pword'];
 
-    // if successfull, send confirmation message to user
-    echo '<script language="javascript">';
-    if ($x) {
-        echo 'alert("Email sent!")';
-    } else {
-        echo 'alert("Error: email could not send")'; 
-    }
+            // send email
+            $to = 'abc@gmail.com';
+            $subject = 'Your account details';
+            $txt = "Username: $uname\nPassword: $pword";
+            $headers = 'From: Site Admins';
+            $x=mail($to,$subject,$txt,$headers);
+        }
+        echo '<script language="javascript">';
+        if ($x) {
+            // if successfull, send confirmation message to user
+                echo 'alert("Email sent!")';
+        } else {
+            echo 'alert("Error: email could not send")'; 
+        }    
     echo '</script>';
+    closeConnection($pdo);
+    #header("Location: /Adventure-Bulletin/home.php");
+    } catch (RuntimeException $e) {
+        echo $e->getMessage();
+        die();
+    }
 ?>

@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="navbar-nav">
             <li class="nav-item" ><a class="nav-link" href="home.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="sub-forum.html">Posts</a></li>
+            <li class="nav-item"><a class="nav-link" href="sub-forum.php">Posts</a></li>
             <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
             <!--Check if user is logged in-->
             <li class="nav-item dropdown">
@@ -37,12 +37,12 @@
                   </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" method="GET" action="search-results.php" >
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
     </div> 
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
+    <button type="button" class="navbar-toggler" data-toggle="collapse"  name="search" data-target="#myNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
@@ -52,24 +52,26 @@
             <div class='col-md-12'>
                 <h1>Search Results</h1>
                 <?php
-                    include 'DBConnection.php';
-                    include 'Validate.php';
+                    include 'php/DBConnection.php';
+                    include 'php/Validate.php';
 
                     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         $search = Validate($_GET['search']);
+                        $search = '%'.$search.'%';
                         try {
                             $pdo = openConnection();
-                            $sql = "SELECT post_title, post_body, uname, board_title FROM post WHERE post_title LIKE %:search%";
+                            $sql = "SELECT post_title, post_body, uname, board_title, post_time FROM post WHERE post_title LIKE :search ORDER BY post_time DESC LIMIT 10";
                             $stmt = $pdo->prepare($sql);
-                            $stmt->bindValue(':search', $search);
+                            $stmt->bindValue(':search',  $search);   
                             $stmt->execute();
-                            while ($rst = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            while ($rst = $stmt->fetch()) {
                                 echo "<h3>$rst[0]</h3>";
                                 echo "<p id='post'>$rst[1]</p>";
                             }
                             closeConnection($pdo);
                         } catch (PDOException $e) {
-                            die($e->getMessage());
+                            echo $e->getMessage();
+                            die();
                         } 
                     }
                 ?>
