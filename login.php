@@ -41,7 +41,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="login.php">Login</a>
                     <a class="dropdown-item" href="account.html">Create Account</a>
-                    <a class="dropdown-item" href="admin.html">Admin</a>
+                    <a class="dropdown-item" href="admin.php">Admin</a>
                   </div>
             </li>
         </ul>
@@ -72,7 +72,6 @@
             <input class="button" id="login" type="submit" value="Login"> 
             </p>    
         </form>
-        <a href="forgot.html">Forgot Username/Password?</a>
     </div>
     </body>
     

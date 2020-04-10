@@ -39,7 +39,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="login.php">Login</a>
                     <a class="dropdown-item" href="account.html">Create Account</a>
-                    <a class="dropdown-item" href="admin.html">Admin</a>
+                    <a class="dropdown-item" href="admin.php">Admin</a>
                   </div>
             </li>
         </ul>
@@ -65,8 +65,6 @@
             // $stmt = $pdo->prepare($sql);
             // $stmt->bindParam(':uname', $uname);
             // $stmt->execute();
-            
-            
             echo "<div class='container'>\n";
                 echo "<div class='row'>\n";
                     echo "<div class='col-md-4'>\n";
@@ -123,7 +121,7 @@
     <p><button class='btn' id='edit' value='Edit Profile'>Edit Profile</p>
         <script type='text/javascript'>
                 document.getElementById('edit').onclick = function () {
-                location.href = 'edit-profile.html';
+                location.href = 'edit-profile.php';
             };
         </script>
 </body>

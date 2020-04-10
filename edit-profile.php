@@ -1,21 +1,22 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>edit-profile</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
     <!--Import boostrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <!--Nav Bar-->
+    <!--Nav -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!--css-->
-    <link rel="stylesheet" href="css/forgot.css">
+    <link rel="stylesheet" href="css/edit-profile.css">
     <!--javascript-->
-    <script src="js/forgot.js"></script>
-    
+    <script src="js/edit-profile.js"></script>
 </head>
 <body>
     <header>
@@ -27,17 +28,17 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="navbar-nav">
-            <li class="nav-item" ><a class="nav-link" href="home.html">Home</a></li>
+            <li class="nav-item" ><a class="nav-link" href="home.php">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="sub-forum.php">Posts</a></li>
             <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
             <!--Check if user is logged in-->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle nav-link active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
+                <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="login.php">Login</a>
                     <a class="dropdown-item" href="account.html">Create Account</a>
-                    <a class="dropdown-item" href="admin.html">Admin</a>
+                    <a class="dropdown-item" href="admin.php">Admin</a>
                   </div>
             </li>
         </ul>
@@ -50,19 +51,36 @@
     </button>
 </nav>
 
-
-<body>
-    <div class="forgot">
-        <form name=user method="POST" action="php/forgot.php" onsubmit="return validateForm()" >
-            <p>
-                <label for="email">Please enter the email you used to signed up with:</label>
-                <input type="email" name="email" id="email" required>
-            </p>
-            <p>
-                <input class="button" type="submit" value="Submit">
-            </p>
+<!--Edit account info-->
+    <div class="createAccount">
+        <!--Action should be changed to edit account php file -->
+        <form onsubmit="validateForm()" name="create" method="POST" action="php/UpdateAccount.php">
+        <p>
+            <label for="pic">Upload a New Profile Picture:</label>
+            <input type="file" name="pic" id="pic">
+        </p> 
+        <p>
+            <label for="name">New First and Last Name:</label>
+            <input type="text" id="full_name" name="full_name">
+        </p>
+        <p>
+            <label for="email">Enter Your New Email:</label>
+            <input type="email" id="email" name="email" required>
+        </p>
+        <p>
+            <label for="pass">New Password:</label>
+            <input type="password" id="pword" name="pword" required>
+        </p>
+        <p>
+            <label for="passConfirm">Confirm Password:</label>
+            <input type="password" id="passConfirm" name="password" required>
+        </p>
+        <p>
+            <input class="button" id="create_account" type="submit" value="Edit"> 
+        </p>    
         </form>
-    </div>
-</body>
+        </div>
+        </main>
+    </body>
     
-</html>
+    </html>

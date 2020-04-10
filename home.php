@@ -38,7 +38,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="login.php">Login</a>
                     <a class="dropdown-item" href="account.html">Create Account</a>
-                    <a class="dropdown-item" href="admin.html">Admin</a>
+                    <a class="dropdown-item" href="admin.php">Admin</a>
                   </div>
             </li>
         </ul>        
@@ -83,7 +83,7 @@
                 <p><button class='btn' id='settings' value='Edit Profile'>Edit Profile</p>
                     <script type='text/javascript'>
                         document.getElementById('settings').onclick = function () {
-                            location.href = 'edit-profile.html';
+                            location.href = 'edit-profile.php';
                         echo };
                     </script>
             </div>";

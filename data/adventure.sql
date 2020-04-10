@@ -33,9 +33,11 @@ CREATE TABLE comment(
     FOREIGN KEY (uname) REFERENCES account(uname),
     FOREIGN KEY (post_id) REFERENCES post(post_id),
     PRIMARY KEY(comment_id)
-); 
+);
 
 INSERT INTO board VALUES ('Skiing');
 INSERT INTO board VALUES ('Hiking');
 INSERT INTO board VALUES ('Climbing');
 INSERT INTO board VALUES ('Kayaking');
+
+INSERT INTO `account` (`uname`, `email`, `full_name`, `birth_date`, `pword`, `is_admin`, `pic`) VALUES ('admin', NULL, NULL, NULL, '$2y$10$25HsVptdQGlYyEA9S/qtsedLDdymWVJwEhIQsD9MhG31PteNqZEAG', NULL, NULL);
