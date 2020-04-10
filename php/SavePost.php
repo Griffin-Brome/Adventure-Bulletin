@@ -28,14 +28,13 @@ if (isset($_SESSION['uname'])) { // must be logged in to post
             $statement->bindParam(":board", $board);
             $statement->bindParam(":post_time", $datetime);
             $statement->execute();
-            
             closeConnection($pdo);
+
+            header("Location: /Adventure-Bulletin/sub-forum.php");
+            die();
         } catch (PDOException $e) {
             die($e->getMessage());
         }
     }
-} else {
-    // todo fix this
-    echo $_SESSION['uname'];
-}
+} 
 ?>

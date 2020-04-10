@@ -83,7 +83,7 @@
                 <p><button class='btn' id='settings' value='Edit Profile'>Edit Profile</p>
                     <script type='text/javascript'>
                         document.getElementById('settings').onclick = function () {
-                            location.href = 'edit-profile.html';
+                            location.href = 'edit-profile.php';
                         echo };
                     </script>
             </div>";

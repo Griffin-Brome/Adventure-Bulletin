@@ -42,39 +42,55 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="GET" action="search-results.php" >
-            <input class="form-control mr-sm-2" type="search" placeholder="Search"  name="search" aria-label="Search">            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search posts"  name="search" aria-label="Search">            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <form class="form-inline my-2 my-lg-0" method="GET" action="php/search-users.php">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search users"  name="search" aria-label="Search">            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
     </div> 
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
-<!--Sould be pulling all this info from database-->
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <p id="picture"><img src="img/user.png" width=100></p>
-        </div>
-        <div class="col-md-8" >
-            <h3>Admin:</h3>
-            <p id="admin" ></p>
-            <h3>Banned users:</h3>
-            <p id="banned"></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8">
-            <h1>Removed Posts</h1>
-            <h3>1</h3>
-            <p id="post1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <h3>2</h3>
-            <p id="post1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>   
-        </div>
-        <div class="col-md-4">
-            <h3>Remmoved Sub-Forums:</h3>
-            <p id="sub-forum"></p>
-        </div>
-    </div>
-</div>
+<?php
+    include "php/DBConnection.php";
+    if (isset($_SESSION['uname'])) {
+        $uname = $_SESSION['uname'];
+        $pdo = openConnection();
+        $sql = "SELECT is_admin FROM account WHERE uname=:uname";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':uname', $uname);
+        $stmt->execute();
+        if ($rst = $stmt->fetch()) {
+            if ($rst[0]) {
+                echo "<div class='container'>
+                <div class='row'>
+                    <div class='col-md-4'>
+                        <p id='picture'><img src='img/user.png' width=100></p>
+                    </div>
+                    <div class='col-md-8' >
+                        <h3>Admin:</h3>
+                        <p id='admin'>$uname</p>
+                        <h3>Banned users:</h3>
+                        <p id='banned'></p>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-8'>
+                        <h1>Removed Posts</h1>
+                    </div>
+                    <div class='col-md-4'>
+                        <h3>Removed Sub-Forums:</h3>
+                        <p id='sub-forum'></p>
+                    </div>
+                </div>
+            </div>";
+            } else {
+                echo "<h1 style='color: red; text-align: center'>NOT AN ADMIN</h1>";
+            }
+        }
+    }
+?>
+
 </body>
 </html>

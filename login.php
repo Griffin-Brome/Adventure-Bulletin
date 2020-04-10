@@ -72,7 +72,6 @@
             <input class="button" id="login" type="submit" value="Login"> 
             </p>    
         </form>
-        <a href="forgot.html">Forgot Username/Password?</a>
     </div>
     </body>
     

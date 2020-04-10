@@ -121,7 +121,7 @@
     <p><button class='btn' id='edit' value='Edit Profile'>Edit Profile</p>
         <script type='text/javascript'>
                 document.getElementById('edit').onclick = function () {
-                location.href = 'edit-profile.html';
+                location.href = 'edit-profile.php';
             };
         </script>
 </body>
