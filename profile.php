@@ -119,10 +119,10 @@
         header("Location: login.php");
     }
     ?>
-    <p><button style="margin-left: 45%; font-size: 30px"  class='btn'>Edit Profile</p>
+    <p><button class='btn' id='edit' value='Edit Profile'>Edit Profile</p>
         <script type='text/javascript'>
-            document.getElementById('settings').onclick = function () {
-            location.href = 'edit-profile.html';
+                document.getElementById('edit').onclick = function () {
+                location.href = 'edit-profile.html';
             };
         </script>
 </body>

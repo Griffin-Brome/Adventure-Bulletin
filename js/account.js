@@ -1,11 +1,10 @@
 //will also have to check if the username already exists
+
 function validateForm() {
     validateName(document.forms["create"]["name"].value);
     validateEmail(document.forms["create"]["email"].value);
     validatePasswords(document.forms["create"]["pass"].value, document.forms["create"]["passConfirm"].value);
   }
-
-
   function validateName(name){
     if (name == "") {
         alert("Name must be entered");
@@ -29,5 +28,15 @@ function validateForm() {
       return false;
   }
 }
-  
+// function checkAvailability() {
+//   jQuery.ajax({
+//     url: "php\CheckUsername.php",
+//     data:'username='+$("#username").val(),
+//     type: "POST",
+//     success:function(data){
+//         $("#user-availability-status").html(data);
+//     },
+//     error:function (){}
+//   });
+//   }
   
